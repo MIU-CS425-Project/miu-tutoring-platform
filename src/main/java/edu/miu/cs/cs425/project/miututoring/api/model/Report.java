@@ -21,7 +21,6 @@ public class Report {
 
     @OneToOne
     @JoinColumn(name = "course")
-    @NotNull(message = "*Course is Required")
     private Course course;
 
     @NotNull(message = "*Report is Required")

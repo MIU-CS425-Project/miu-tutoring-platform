@@ -61,7 +61,11 @@ public class TutorRequestImpl implements TutorRequestService {
 
     @Override
     public TutorRequest saveTutorRequest(TutorRequest tutorRequest) {
-        return tutorRequestRepository.save(tutorRequest);
+        Enrollment enrollment = tutorRequest.getEnrollment();
+        TutorRequest savedTutorRequest = tutorRequestRepository.save(tutorRequest);
+        enrollment.setTutorRequest(savedTutorRequest);
+        enrollmentRepository.save(enrollment);
+        return savedTutorRequest;
     }
 
     @Override
@@ -81,6 +85,7 @@ public class TutorRequestImpl implements TutorRequestService {
             TutorRequest updatedRequest =  tutorRequestRepository.save(tutorRequest);
             Enrollment enrollment = enrollmentRepository.findById(updatedRequest.getEnrollment().getEnrollmentId()).get();
             enrollment.setRole(Enrollment.RoleType.TUTOR);
+            enrollment.setTutorialGroup(tutorialGroup);
             tutorialGroup.setTutor(enrollment.getStudent());
             tutorialGroupRepository.save(tutorialGroup);
             enrollmentRepository.save(enrollment);

@@ -1,9 +1,6 @@
 package edu.miu.cs.cs425.project.miututoring.api.controller;
 
-import edu.miu.cs.cs425.project.miututoring.api.model.Course;
 import edu.miu.cs.cs425.project.miututoring.api.model.Report;
-import edu.miu.cs.cs425.project.miututoring.api.model.Student;
-import edu.miu.cs.cs425.project.miututoring.api.model.TutorialGroup;
 import edu.miu.cs.cs425.project.miututoring.api.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -63,7 +60,7 @@ public class ReportController {
         return reportService.searchReports(searchQuery, page, itemsPerPage, sortBy, sortDesc);
     }
 
-    @GetMapping(value = "/get/{studentId}")
+    @GetMapping(value = "/getbystudent/{studentId}")
     public List<Report> getReportByStudentId(@PathVariable Long studentId) {
         return reportService.getReportByStudentId(studentId);
     }
