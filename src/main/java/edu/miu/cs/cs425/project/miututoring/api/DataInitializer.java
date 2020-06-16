@@ -140,9 +140,9 @@ public class DataInitializer implements CommandLineRunner {
             saveEnrollment(enrollment2);
     
             //Report
-            Report report1 = new Report(student1, tutorialGroup1, course1, "This student is progressing really well");
+            Report report1 = new Report(student1, tutorialGroup1, course1, "This group was really helping, I understood a lot about the course");
             saveReport(report1);
-            Report report2 = new Report(student3, tutorialGroup3, course2, "This student needs to understand inheritance more");
+            Report report2 = new Report(student3, tutorialGroup3, course2, "The tutor is not willing to answer some of our questions");
             saveReport(report2);
 
             System.out.println("Successfully Initialized");
